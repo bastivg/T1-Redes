@@ -4,7 +4,8 @@ import socket
 
 # definicion de host y puerto: Indicarán hacia donde nos estaremos conectando inicialmente
 
-host = 'localhost'
+#host = 'localhost'
+host = 'jdiaz.inf.santiago.usm.cl'
 port = 50006
 
 # Un ejemplo en UDP
