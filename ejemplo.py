@@ -2,6 +2,8 @@
 
 import socket
 
+
+print("hola soy los cambios")
 # definicion de host y puerto: Indicarán hacia donde nos estaremos conectando inicialmente
 
 #host = 'localhost'
