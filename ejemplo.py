@@ -35,5 +35,6 @@ open("nombre.txt", "w") -> open("nombre.txt", "wb")
 '''
 
 ## NOTA: Mucho ojo con lo que hace encode y decode, recuerden que la codificación con .encode() transforma un texto a bytes. [para cuando escriban la foto por ejemplo]
-
+print("opcion tupla: ",respuesta[ID])
+print("opcion lista: ",respuesta[1])
 print(respuesta)
