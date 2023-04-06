@@ -33,7 +33,7 @@ for elemento in elementos:
     clave, valor = elemento.split(":")
     diccionario[clave] = int(valor)
     
- buffer = diccionario["W"] * diccionario["H"] * 3
+buffer = diccionario["W"] * diccionario["H"] * 3
 
 print(buffer)
 
