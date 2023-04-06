@@ -26,6 +26,15 @@ s.sendto(msj, (host, port))
 # el valor dentro de recvfrom es el buffer que va a leer de lo recibido.
 respuesta = s.recvfrom(1024)[0].decode()
 
+elementos = respuesta[0].split()
+
+diccionario = {}
+for elemento in elementos:
+    clave, valor = elemento.split(":")
+    diccionario[clave] = int(valor)
+    
+ int buffer = diccionario["W"] * diccionario["H"] * 3
+
 # Ejemplo para sacar y leer bytes de una foto
 '''
 Es el clásico de ejemplo de abrir y cerrar un archivo, solo que en vez de leer o escribir realizarlo con el comando read bytes y write bytes
@@ -35,5 +44,4 @@ open("nombre.txt", "w") -> open("nombre.txt", "wb")
 '''
 
 ## NOTA: Mucho ojo con lo que hace encode y decode, recuerden que la codificación con .encode() transforma un texto a bytes. [para cuando escriban la foto por ejemplo]
-print("opcion lista: ",respuesta[1])
 print(respuesta)
