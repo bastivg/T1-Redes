@@ -35,6 +35,8 @@ for elemento in elementos:
     
  buffer = diccionario["W"] * diccionario["H"] * 3
 
+print(buffer)
+
 # Ejemplo para sacar y leer bytes de una foto
 '''
 Es el clásico de ejemplo de abrir y cerrar un archivo, solo que en vez de leer o escribir realizarlo con el comando read bytes y write bytes
