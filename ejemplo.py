@@ -33,7 +33,7 @@ for elemento in elementos:
     clave, valor = elemento.split(":")
     diccionario[clave] = int(valor)
     
- int buffer = diccionario["W"] * diccionario["H"] * 3
+ buffer = diccionario["W"] * diccionario["H"] * 3
 
 # Ejemplo para sacar y leer bytes de una foto
 '''
