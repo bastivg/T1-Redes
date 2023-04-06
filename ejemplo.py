@@ -25,7 +25,7 @@ s.sendto(msj, (host, port))
 # aunque solo usaremos el primer dato que se obtiene que contiene el mensaje que llega de vuelta, recordar decodificarlo.
 # el valor dentro de recvfrom es el buffer que va a leer de lo recibido.
 respuesta = s.recvfrom(1024)[0].decode()
-
+print(respuesta)
 elementos = respuesta[0].split()
 
 diccionario = {}
