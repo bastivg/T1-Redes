@@ -57,6 +57,8 @@ print(respuesta)
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
+port = 50008
+
 # Paso 2 - Definir el mensaje a enviar: Debemos establecer un mensaje a enviar al servidor, recuerde codificarlo
 msj1 = "GET 1/" + str(contador) + " IMG ID:" + str(diccionario["ID"])
 msj = msj1.encode()
