@@ -2,6 +2,9 @@
 
 import socket
 
+import io
+import matplotlib.pyplot as plt
+
 from signal import signal, SIGPIPE, SIG_DFL
 signal(SIGPIPE,SIG_DFL)
 
@@ -81,8 +84,6 @@ s_udp_2.sendto(msj1, (host, port))
 respuesta2 = s_udp_2.recvfrom(div_buffer)[0]
 
 
-import io
-import matplotlib.pyplot as plt
 
 im = plt.imread(io.BytesIO(respuesta2))
 plt.imshow(im)
