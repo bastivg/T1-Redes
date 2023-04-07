@@ -36,7 +36,9 @@ for elemento in elementos:
 buffer = diccionario["W"] * diccionario["H"] * 3
 
 contador = 2
-if "P3UDP" or "P3TCP" in diccionario:
+if "P3UDP" in diccionario:
+    contador = 3
+if "P3TCP" in diccionario:
     contador = 3
    
 div_buffer = int(buffer/contador)
@@ -57,6 +59,11 @@ print(respuesta)
 #s.close()  #cierro el socket para intentar abrirlo dnv
 #Llamada por TCP
 
+port = diccionario["P1TCP"]
+s_tcp_1 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+msj1 = ("GET 1/" + str(contador) + " IMG ID:" + str(diccionario["ID"])).encode()
+s_tcp_1.sendto(msj1, (host, port))
+respuesta1 = s_tcp_1.recvfrom(div_buffer)[0]
 #s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 
