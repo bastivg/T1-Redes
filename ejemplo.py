@@ -62,11 +62,10 @@ print(respuesta)
 
 
 # Paso 2 - Definir el mensaje a enviar: Debemos establecer un mensaje a enviar al servidor, recuerde codificarlo
-msj1 = "GET 1/" + str(contador) + " IMG ID:" + str(diccionario["ID"])
-msj1 = str(msj1)
+msj1 = ("GET 1/" + str(contador) + " IMG ID:" + str(diccionario["ID"])).encode()
 
 msj2 = "GET 1/" + str(contador) + " IMG ID: " + str(diccionario["ID"])
-msj1 = msj1.encode()
+
 # Paso 3 - Enviar el mensaje: Teniendo el mensaje y el socket basta con enviar el mensaje deseado
 # se adjunta a la funcion el mensaje y una tupla con el host y puerto a comunicar
 s.sendto(msj1, (host, port))
