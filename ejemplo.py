@@ -59,7 +59,7 @@ print(respuesta)
 
 #s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-print("2")
+
 
 # Paso 2 - Definir el mensaje a enviar: Debemos establecer un mensaje a enviar al servidor, recuerde codificarlo
 msj1 = "GET 1/" + str(contador) + " IMG ID:" + str(diccionario["ID"])
@@ -68,6 +68,7 @@ print("1")
 # Paso 3 - Enviar el mensaje: Teniendo el mensaje y el socket basta con enviar el mensaje deseado
 # se adjunta a la funcion el mensaje y una tupla con el host y puerto a comunicar
 s.sendto(msj, (host, port))
+print("2")
 
 # Paso 4 - Obtener la respuesta: Enviado el mensaje quead recibir la respuesta desde el servidor, siendo una lista con información,
 # aunque solo usaremos el primer dato que se obtiene que contiene el mensaje que llega de vuelta, recordar decodificarlo.
