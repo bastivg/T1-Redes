@@ -58,7 +58,7 @@ print(respuesta)
 #Llamada por TCP
 
 #s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+#s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 
 # Paso 2 - Definir el mensaje a enviar: Debemos establecer un mensaje a enviar al servidor, recuerde codificarlo
