@@ -76,9 +76,9 @@ msj_pt2 = ("GET 2/" + str(contador) + " IMG ID:" + str(diccionario["ID"])).encod
 #Enviar el mensaje
 s_udp_2.sendto(msj_pt2, (host, port))
 #Recibe el mensaje
-respuesta2 = s_udp_2.recvfrom(div_buffer)[0]
+respuesta_pt2 = s_udp_2.recvfrom(div_buffer)[0]
 
 f = open("itento.png", "wb")
-f.write(respuesta1)
-f.write(respuesta2)
+f.write(respuesta_pt1)
+f.write(respuesta_pt2)
 f.close()
