@@ -39,7 +39,7 @@ contador = 2
 if "P3UDP" or "P3TCP" in diccionario:
     contador = 3
    
-div_buffer = buffer/contador
+div_buffer = int(buffer/contador)
 
 
 
