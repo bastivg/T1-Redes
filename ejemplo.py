@@ -64,6 +64,7 @@ s_tcp_1 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 msj1 = ("GET 1/" + str(contador) + " IMG ID:" + str(diccionario["ID"])).encode()
 s_tcp_1.sendto(msj1, (host, port))
 respuesta1 = s_tcp_1.recvfrom(div_buffer)[0]
+print("obtuve la parte 1")
 #s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 
