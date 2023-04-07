@@ -58,14 +58,13 @@ print(respuesta)
 #Llamada por TCP
 
 #s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-port = 50008
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
+print("2")
 
 # Paso 2 - Definir el mensaje a enviar: Debemos establecer un mensaje a enviar al servidor, recuerde codificarlo
 msj1 = "GET 1/" + str(contador) + " IMG ID:" + str(diccionario["ID"])
 msj = msj1.encode()
-
+print("1")
 # Paso 3 - Enviar el mensaje: Teniendo el mensaje y el socket basta con enviar el mensaje deseado
 # se adjunta a la funcion el mensaje y una tupla con el host y puerto a comunicar
 s.sendto(msj, (host, port))
