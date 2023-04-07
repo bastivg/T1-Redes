@@ -62,27 +62,20 @@ print(respuesta)
 
 
 # Paso 2 - Definir el mensaje a enviar: Debemos establecer un mensaje a enviar al servidor, recuerde codificarlo
-msj1 = ("GET 1/" + str(contador) + " IMG ID:" + str(diccionario["ID"])).encode()
+msj1 = ("GET 2/" + str(contador) + " IMG ID:" + str(diccionario["ID"])).encode()
 
-msj2 = "GET 1/" + str(contador) + " IMG ID: " + str(diccionario["ID"])
+msj2 = "GET 2/" + str(contador) + " IMG ID: " + str(diccionario["ID"])
 
 print(msj2)
 
-# Paso 3 - Enviar el mensaje: Teniendo el mensaje y el socket basta con enviar el mensaje deseado
-# se adjunta a la funcion el mensaje y una tupla con el host y puerto a comunicar
+#Enviar el mensaje
 s.sendto(msj1, (host, port))
-
-# Paso 4 - Obtener la respuesta: Enviado el mensaje quead recibir la respuesta desde el servidor, siendo una lista con información,
-# aunque solo usaremos el primer dato que se obtiene que contiene el mensaje que llega de vuelta, recordar decodificarlo.
-# el valor dentro de recvfrom es el buffer que va a leer de lo recibido.
-respuesta2 = s.recvfrom(div_buffer)[0].decode()
-print(respuesta2)
-
-s.sendto(msj2, (host, port))
+#Recibe el mensaje
 respuesta2 = s.recvfrom(div_buffer)[0].decode()
 
-print("aa")
 print(respuesta2)
+
+
 #cambie buffer y [0].decode
 
 
