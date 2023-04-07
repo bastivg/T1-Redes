@@ -51,13 +51,13 @@ open("nombre.txt", "w") -> open("nombre.txt", "wb")
 ## NOTA: Mucho ojo con lo que hace encode y decode, recuerden que la codificación con .encode() transforma un texto a bytes. [para cuando escriban la foto por ejemplo]
 print(respuesta)
 
-s.close()
+s.close()  #cierro el socket para intentar abrirlo dnv
 #Llamada por TCP
 
 #s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+port = 50008
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-port = 50008
 
 # Paso 2 - Definir el mensaje a enviar: Debemos establecer un mensaje a enviar al servidor, recuerde codificarlo
 msj1 = "GET 1/" + str(contador) + " IMG ID:" + str(diccionario["ID"])
