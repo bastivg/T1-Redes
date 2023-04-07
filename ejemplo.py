@@ -57,9 +57,16 @@ print(respuesta)
 #s.close()  #cierro el socket para intentar abrirlo dnv
 #Llamada por TCP
 
-#s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 #s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
+
+
+
+port = diccionario["P2UDP"]
+
+# Un ejemplo en UDP
+# Paso 1 - Definir el socket: el segundo argumento permite definir el tipo de conexión
+s_udp_2 = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 # Paso 2 - Definir el mensaje a enviar: Debemos establecer un mensaje a enviar al servidor, recuerde codificarlo
 msj1 = ("GET 2/" + str(contador) + " IMG ID:" + str(diccionario["ID"])).encode()
@@ -69,7 +76,7 @@ msj2 = "GET 2/" + str(contador) + " IMG ID: " + str(diccionario["ID"])
 print(msj2)
 
 #Enviar el mensaje
-s.sendto(msj1, (host, port))
+s_udp_2.sendto(msj1, (host, port))
 #Recibe el mensaje
 respuesta2 = s.recvfrom(div_buffer)[0].decode()
 
