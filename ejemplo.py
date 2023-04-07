@@ -78,7 +78,7 @@ print(msj2)
 #Enviar el mensaje
 s_udp_2.sendto(msj1, (host, port))
 #Recibe el mensaje
-respuesta2 = s_udp_2.recvfrom(div_buffer)[0].decode()
+respuesta2 = s_udp_2.recvfrom(div_buffer).decode()
 
 print(respuesta2)
 
