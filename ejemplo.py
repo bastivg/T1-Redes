@@ -68,7 +68,7 @@ s.sendto(msj, (host, port))
 # Paso 4 - Obtener la respuesta: Enviado el mensaje quead recibir la respuesta desde el servidor, siendo una lista con información,
 # aunque solo usaremos el primer dato que se obtiene que contiene el mensaje que llega de vuelta, recordar decodificarlo.
 # el valor dentro de recvfrom es el buffer que va a leer de lo recibido.
-respuesta = s.recvfrom(buffer).decode()
+respuesta2 = s.recvfrom(buffer).decode()
 #cambie buffer y [0].decode
 
 
