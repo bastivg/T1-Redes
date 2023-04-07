@@ -75,7 +75,7 @@ s.sendto(msj, (host, port))
 # el valor dentro de recvfrom es el buffer que va a leer de lo recibido.
 respuesta2 = s.recvfrom(div_buffer).decode()
 
-
+print("aa")
 print(respuesta2)
 #cambie buffer y [0].decode
 
