@@ -79,6 +79,6 @@ s_udp_2.sendto(msj_pt2, (host, port))
 respuesta2 = s_udp_2.recvfrom(div_buffer)[0]
 
 f = open("itento.png", "wb")
-f.write(msj_pt1)
-f.write(msj_pt2)
+f.write(respuesta1)
+f.write(respuesta2)
 f.close()
