@@ -66,6 +66,8 @@ msj1 = ("GET 1/" + str(contador) + " IMG ID:" + str(diccionario["ID"])).encode()
 
 msj2 = "GET 1/" + str(contador) + " IMG ID: " + str(diccionario["ID"])
 
+print(msj2)
+
 # Paso 3 - Enviar el mensaje: Teniendo el mensaje y el socket basta con enviar el mensaje deseado
 # se adjunta a la funcion el mensaje y una tupla con el host y puerto a comunicar
 s.sendto(msj1, (host, port))
