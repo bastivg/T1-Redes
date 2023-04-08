@@ -50,6 +50,7 @@ def verificador(vef_b):
 
 
 respuesta1 = llamado_1_udp(host,port)
+print(respuesta1)
 elementos = respuesta1.split()
 diccionario = {}
 for elemento in elementos:
@@ -73,11 +74,12 @@ div_buffer = int(buffer/contador)
 #Llamada por TCP
 
 respuesta_pt1 = llamado_tcp(host,diccionario["P1TCP"],1)
-
+print("se obtuvo la pt1")
 
 #Llamada por UDP
 
 respuesta_pt2 = llamado_2_udp(host,diccionario["P2UDP"],2)
+print("se obtuvo la pt2")
 
 
 if "P3UDP" in diccionario:
@@ -97,6 +99,8 @@ elif "P3TCP" in diccionario:
     f.write(respuesta_pt3)
     f.close()
 else :
+    i = verificador(respuesta_pt1+respuesta_pt2)
+    print("probando verificador: 0 = success ", i)
     f = open("itento.png", "wb")
     f.write(respuesta_pt1)
     f.write(respuesta_pt2)
