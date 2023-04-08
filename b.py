@@ -21,7 +21,7 @@ def llamado_tcp(host_tcp,port_tcp,n): #n = n / 3
     #port = diccionario["P1TCP"]
     s_tcp_1 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s_tcp_1.connect((host_tcp,port_tcp))
-    msj_pt1 = ("GET " + n + "/" + str(contador) + " IMG ID:" + str(diccionario["ID"])).encode('utf-8')
+    msj_pt1 = ("GET " + str(n) + "/" + str(contador) + " IMG ID:" + str(diccionario["ID"])).encode('utf-8')
     s_tcp_1.sendto(msj_pt1, (host_tcp, port_tcp))
     respuesta_tcp = s_tcp_1.recvfrom(div_buffer)[0]
     return respuesta_tcp
@@ -29,7 +29,7 @@ def llamado_tcp(host_tcp,port_tcp,n): #n = n / 3
 def llamado_2_udp(host_udp,port_udp,n):
     #port = diccionario["P2UDP"]
     s_udp_2 = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    msj_pt2 = ("GET "+ n + "/" + str(contador) + " IMG ID:" + str(diccionario["ID"])).encode()
+    msj_pt2 = ("GET "+ str(n) + "/" + str(contador) + " IMG ID:" + str(diccionario["ID"])).encode()
     s_udp_2.sendto(msj_pt2, (host_udp, port_udp))
     respuesta_pt2 = s_udp_2.recvfrom(div_buffer)[0]
     return respuesta_pt2
