@@ -48,7 +48,7 @@ def verificador(vef_b):
     s_tcp_pv.sendto(msj_pv, (host, diccionario["PV"]))
     respuesta_pv = s_tcp_pv.recvfrom(div_buffer)[0]
     print(respuesta_pv)
-    if respuesta_pv == "b'200: SUCCESS'": #ojo dsp cambiar b por el nombre del archivo
+    if "200" in respuesta_pv:
         print("entro al success")
         return 0
     return 1
