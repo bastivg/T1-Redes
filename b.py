@@ -37,7 +37,7 @@ def llamado_2_udp(host_udp,port_udp,n):
 def verificador(vef_b):
     s_tcp_pv = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s_tcp_pv.connect((host,diccionario["PV"]))
-    msj_pv = vef_b.encode('utf-8')
+    msj_pv = vef_b
     s_tcp_pv.sendto(msj_pv, (host, diccionario["PV"]))
     respuesta_pv = s_tcp_pv.recvfrom(div_buffer)[0]
     print(respuesta_pv)
