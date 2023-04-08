@@ -24,6 +24,7 @@ def llamado_tcp(host_tcp,port_tcp,n): #n = n / 3
     s_tcp_1.connect((host_tcp,port_tcp))
     msj_pt1 = ("GET " + str(n) + "/" + str(contador) + " IMG ID:" + str(diccionario["ID"]))
     print("Mensaje enviado a ", diccionario["ID"], ": <", port_tcp,"> por <TCP>: <", msj_pt1, ">")
+    
     msj_pt1 = ("GET " + str(n) + "/" + str(contador) + " IMG ID:" + str(diccionario["ID"])).encode('utf-8')
     s_tcp_1.sendto(msj_pt1, (host_tcp, port_tcp))
     respuesta_tcp = s_tcp_1.recvfrom(div_buffer)[0]
@@ -31,11 +32,13 @@ def llamado_tcp(host_tcp,port_tcp,n): #n = n / 3
     return respuesta_tcp
 
 def llamado_2_udp(host_udp,port_udp,n):
-    #port = diccionario["P2UDP"]
     s_udp_2 = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    msj_pt2 = ("GET "+ str(n) + "/" + str(contador) + " IMG ID:" + str(diccionario["ID"]))
+    print("Mensaje enviado a ", diccionario["ID"], ": <", port_udp,"> por <UDP>: <", msj_pt2, ">")
     msj_pt2 = ("GET "+ str(n) + "/" + str(contador) + " IMG ID:" + str(diccionario["ID"])).encode()
     s_udp_2.sendto(msj_pt2, (host_udp, port_udp))
     respuesta_pt2 = s_udp_2.recvfrom(div_buffer)[0]
+    print("Mensaje recibido de: <", diccionario["ID"], ">:<", port_udp,"> por <UDP>: <Se reciben los bytes de pt.",n,">")
     return respuesta_pt2
 
 def verificador(vef_b):
@@ -45,7 +48,8 @@ def verificador(vef_b):
     s_tcp_pv.sendto(msj_pv, (host, diccionario["PV"]))
     respuesta_pv = s_tcp_pv.recvfrom(div_buffer)[0]
     print(respuesta_pv)
-    if respuesta_pv == "'200: SUCCESS'":
+    if respuesta_pv == '200: SUCCESS':
+        print("entro al success")
         return 0
     return 1
 
@@ -54,7 +58,6 @@ def verificador(vef_b):
 
 
 respuesta1 = llamado_1_udp(host,port)
-print(respuesta1)
 elementos = respuesta1.split()
 diccionario = {}
 for elemento in elementos:
@@ -78,13 +81,10 @@ div_buffer = int(buffer/contador)
 #Llamada por TCP
 
 respuesta_pt1 = llamado_tcp(host,diccionario["P1TCP"],1)
-print("se obtuvo la pt1")
 
 #Llamada por UDP
 
 respuesta_pt2 = llamado_2_udp(host,diccionario["P2UDP"],2)
-print("se obtuvo la pt2")
-
 
 if "P3UDP" in diccionario:
     respuesta_pt3 = llamado_2_udp(host,diccionario["P3UDP"],3)
