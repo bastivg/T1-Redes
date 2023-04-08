@@ -58,8 +58,8 @@ def creacion_img(rp1,rp2,rp3,n):
     if n == 2:
         i = verificador(rp1+rp2)
         if i == 0:
-            print("creando imagen")
-            print("pintando la imagen")
+            print("Creando imagen")
+            print("Pintando la imagen")
             f = open(str(diccionario["ID"]) + "Imagen.png", "wb")
             f.write(rp1)
             f.write(rp2)
