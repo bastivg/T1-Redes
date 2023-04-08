@@ -78,7 +78,33 @@ s_udp_2.sendto(msj_pt2, (host, port))
 #Recibe el mensaje
 respuesta_pt2 = s_udp_2.recvfrom(div_buffer)[0]
 
-f = open("itento.png", "wb")
-f.write(respuesta_pt1)
-f.write(respuesta_pt2)
-f.close()
+if "P3UDP" in diccionario:
+    port = diccionario["P3UDP"]
+    s_udp_3 = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    msj_pt3 = ("GET 3/" + str(contador) + " IMG ID:" + str(diccionario["ID"])).encode()
+    #Enviar el mensaje
+    s_udp_3.sendto(msj_pt3, (host, port))
+    #Recibe el mensaje
+    respuesta_pt3 = s_udp_3.recvfrom(div_buffer)[0]
+    f = open("itento.png", "wb")
+    f.write(respuesta_pt1)
+    f.write(respuesta_pt2)
+    f.write(respuesta_pt3)
+    f.close()
+elif "P3TCP" in diccionario:
+    port = diccionario["P1TCP"]
+    s_tcp_3 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s_tcp_3.connect((host,port))
+    msj_pt3 = ("GET 3/" + str(contador) + " IMG ID:" + str(diccionario["ID"])).encode('utf-8')
+    s_tcp_3.sendto(msj_pt3, (host, port))
+    respuesta_pt3 = s_tcp_3.recvfrom(div_buffer)[0]
+    f = open("itento.png", "wb")
+    f.write(respuesta_pt1)
+    f.write(respuesta_pt2)
+    f.write(respuesta_pt3)
+    f.close()
+else :
+    f = open("itento.png", "wb")
+    f.write(respuesta_pt1)
+    f.write(respuesta_pt2)
+    f.close()
