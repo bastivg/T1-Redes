@@ -27,7 +27,7 @@ def llamado_tcp(host_tcp,port_tcp,n): #n = n / 3
     msj_pt1 = ("GET " + str(n) + "/" + str(contador) + " IMG ID:" + str(diccionario["ID"])).encode('utf-8')
     s_tcp_1.sendto(msj_pt1, (host_tcp, port_tcp))
     respuesta_tcp = s_tcp_1.recvfrom(div_buffer)[0]
-    print("Mensaje recibido de: <", diccionario["ID"], ">:<", port_tcp,"> por <TCP>: <", respuesta_tcp, ">")
+    print("Mensaje recibido de: <", diccionario["ID"], ">:<", port_tcp,"> por <TCP>: <Se reciben los bytes de pt.",n,">")
     return respuesta_tcp
 
 def llamado_2_udp(host_udp,port_udp,n):
