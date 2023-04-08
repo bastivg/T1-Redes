@@ -46,7 +46,7 @@ def verificador(vef_b):
     s_tcp_pv.connect((host,diccionario["PV"]))
     msj_pv = vef_b
     s_tcp_pv.sendto(msj_pv, (host, diccionario["PV"]))
-    respuesta_pv = s_tcp_pv.recvfrom(div_buffer)[0]
+    respuesta_pv = s_tcp_pv.recvfrom(div_buffer)[0].decode()
     print(respuesta_pv)
     if "200" in respuesta_pv:
         print("entro al success")
