@@ -1,15 +1,14 @@
 # socket: La libreria a utilizar
 import socket
 
-#from signal import signal, SIGPIPE, SIG_DFL
-#signal(SIGPIPE,SIG_DFL)
 
 # definicion de host y puerto: Indicarán hacia donde nos estaremos conectando inicialmente
 host = 'jdiaz.inf.santiago.usm.cl'
 port = 50006
 
 
-# Un ejemplo en UDP
+# Para la primera llamada por udp, obteniendo la Id, anchos y largos...
+# Recibe el host y el puerto por el cual se realiza la primera llamada.
 def llamado_1_udp(host_udp,port_udp):
     s_udp = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     print("Mensaje enviado a : <",port,"> por <UDP>: <GET NEW IMG DATA>")
@@ -19,6 +18,7 @@ def llamado_1_udp(host_udp,port_udp):
     print("Mensaje recibido de: <", port,"> por <UDP>: <",respuesta,">")
     return respuesta
 
+# Hace una llamada TCP, recibe el host de tcp, el port, y n que es la parte de la imagen.
 def llamado_tcp(host_tcp,port_tcp,n): #n = n / 3
     s_tcp_1 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s_tcp_1.connect((host_tcp,port_tcp))
@@ -31,6 +31,7 @@ def llamado_tcp(host_tcp,port_tcp,n): #n = n / 3
     print("Mensaje recibido de: <", diccionario["ID"], ">:<", port_tcp,"> por <TCP>: <Se reciben los bytes de pt.",n,">")
     return respuesta_tcp
 
+# Hace un llamado UDP, recibe el host de udp, el port, y n que es la parte de la imagen.
 def llamado_2_udp(host_udp,port_udp,n):
     s_udp_2 = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     msj_pt2 = ("GET "+ str(n) + "/" + str(contador) + " IMG ID:" + str(diccionario["ID"]))
@@ -41,6 +42,8 @@ def llamado_2_udp(host_udp,port_udp,n):
     print("Mensaje recibido de: <", diccionario["ID"], ">:<", port_udp,"> por <UDP>: <Se reciben los bytes de pt.",n,">")
     return respuesta_pt2
 
+# Se conecta con el canal para verificar, que la imagen tenga los bits correctos.
+# Recibe los bits a verificar
 def verificador(vef_b):
     print("verificando respuesta... este proceso puede tardar")
     s_tcp_pv = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -54,6 +57,7 @@ def verificador(vef_b):
     print("El proceso fallo uwu")
     return 1
 
+# Va a crear la imagen, recibiendo la respuesta 1, 2, 3 y n que son las partes que tiene la imagen
 def creacion_img(rp1,rp2,rp3,n):
     if n == 2:
         i = verificador(rp1+rp2)
@@ -86,7 +90,7 @@ def creacion_img(rp1,rp2,rp3,n):
 
 
 
-veff = True
+veff = True   # veff va a generar el bucle esperando a recibir la imagen de forma correcta.
 
 while veff:
     print("Iniciando un nuevo Proceso \n>:D\n")
@@ -95,9 +99,9 @@ while veff:
     diccionario = {}
     for elemento in elementos:
         clave, valor = elemento.split(":")
-        diccionario[clave] = int(valor)
+        diccionario[clave] = int(valor)  # Creo un diccionario con cada propiedad que retorna la primera llamada
         
-    buffer = diccionario["W"] * diccionario["H"] * 3
+    buffer = diccionario["W"] * diccionario["H"] * 3 # Calculo el buffer
 
     contador = 2
     if "P3UDP" in diccionario:
